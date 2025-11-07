@@ -6,9 +6,11 @@ Las únicas librerias que se necesitan son dos:
 
 Para ambas es necesario ejecutar los comandos:
 ```
-    flutter pub add intl
-	
-    flutter pub add sqflite
+flutter pub add intl
+```
+
+```
+flutter pub add sqflite
 ```
 
 O añadirlos a pubspec.yaml dentro de dependencies (al mismo nivel que cupertino_icons):
