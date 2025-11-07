@@ -110,7 +110,43 @@ class _HoyState extends State<Hoy> {
                             ),
                             FilledButton(
                               onPressed: () {
-                                //
+                                DB
+                                    .deleteCita(citas[indice])
+                                    .then((resultado) {
+                                      if (resultado > 0) {
+                                        Navigator.pop(context);
+
+                                        ScaffoldMessenger.of(
+                                          context,
+                                        ).showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              "Se eliminó correctamente",
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            backgroundColor: Colors.greenAccent,
+                                          ),
+                                        );
+                                        actualizarLista();
+                                      }
+                                    })
+                                    .catchError((err) {
+                                      ScaffoldMessenger.of(
+                                        context,
+                                      ).showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            "Hubo un error al eliminar:\n ${err.toString()}",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          backgroundColor: Colors.redAccent,
+                                        ),
+                                      );
+                                    });
                               },
                               style: FilledButton.styleFrom(
                                 backgroundColor: Colors.cyan,
